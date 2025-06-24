@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Atm = ({ setWallet, budget }) => {
+const Atm = ({ setWallet }) => {
   const [amount, setAmount] = useState("");
 
   const handleSubmit = (event) => {
