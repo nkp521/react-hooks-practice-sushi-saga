@@ -5,7 +5,7 @@ const Atm = ({ setWallet, budget }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setWallet(Number(amount) + budget);
+    setWallet((wallet) => wallet + Number(amount));
     setAmount("");
   };
 
@@ -19,7 +19,7 @@ const Atm = ({ setWallet, budget }) => {
         step="1.00"
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
-        placeholder="$250 Maximum"
+        placeholder="$250 Max"
       />
       <button type="submit">Withdraw Money</button>
     </form>
