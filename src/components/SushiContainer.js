@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import MoreButton from "./MoreButton";
 import Sushi from "./Sushi";
 
-function SushiContainer({ setSushis, sushis, API }) {
+function SushiContainer({ setSushis, sushis, API, eatenSushi, setEatenSushi }) {
   const [moreSushi, setMoreSushi] = useState(0);
 
   useEffect(() => {
@@ -16,12 +16,24 @@ function SushiContainer({ setSushis, sushis, API }) {
   const renderSushi = () =>
     sushis
       .slice(moreSushi, moreSushi + 4)
-      .map((sushi) => <Sushi key={sushi.id} sushi={sushi} />);
+      .map((sushi) => (
+        <Sushi
+          key={sushi.id}
+          sushi={sushi}
+          handleEaten={handleEaten}
+          eatenSushi={eatenSushi}
+        />
+      ));
 
   const handleNextSushi = () => {
     setMoreSushi((moreSushi) =>
       moreSushi + 4 >= sushis.length ? 0 : moreSushi + 4
     );
+  };
+  const handleEaten = (sushi) => {
+    if (!eatenSushi.includes(sushi.id)) {
+      setEatenSushi([...eatenSushi, sushi.id]);
+    }
   };
 
   return (
