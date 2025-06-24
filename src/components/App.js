@@ -8,7 +8,8 @@ function App() {
   const [sushis, setSushis] = useState([]);
   const [eatenSushi, setEatenSushi] = useState([]);
   const [sushiCost, setSushiCost] = useState(0);
-  console.log(sushiCost);
+
+  const budget = 100 - sushiCost;
 
   return (
     <div className="app">
@@ -21,7 +22,7 @@ function App() {
         setSushiCost={setSushiCost}
         sushiCost={sushiCost}
       />
-      <Table plates={eatenSushi} sushiCost={sushiCost} />
+      <Table plates={eatenSushi} budget={budget} />
     </div>
   );
 }

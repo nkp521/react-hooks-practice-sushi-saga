@@ -39,7 +39,12 @@ function SushiContainer({
     );
   };
   const handleEaten = (sushi) => {
-    if (!eatenSushi.includes(sushi.id)) {
+    const budget = 100 - sushiCost;
+
+    if (budget <= 0 || sushi.price > budget) {
+      alert("Get More Money or Wash The Dishes!");
+      return;
+    } else if (!eatenSushi.includes(sushi.id)) {
       setEatenSushi([...eatenSushi, sushi.id]);
       setSushiCost(sushiCost + sushi.price);
     }
