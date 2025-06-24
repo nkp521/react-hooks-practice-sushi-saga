@@ -3,7 +3,7 @@ import MoreButton from "./MoreButton";
 import Sushi from "./Sushi";
 
 function SushiContainer({ setSushis, sushis, API }) {
-  const [moreSushi, setMoreSushi] = useState([0]);
+  const [moreSushi, setMoreSushi] = useState(0);
 
   useEffect(() => {
     fetch(API)
@@ -15,13 +15,19 @@ function SushiContainer({ setSushis, sushis, API }) {
 
   const renderSushi = () =>
     sushis
-      .slice(moreSushi, setMoreSushi + 4)
+      .slice(moreSushi, moreSushi + 4)
       .map((sushi) => <Sushi key={sushi.id} sushi={sushi} />);
+
+  const handleNextSushi = () => {
+    setMoreSushi((moreSushi) =>
+      moreSushi + 4 >= sushis.length ? 0 : moreSushi + 4
+    );
+  };
 
   return (
     <div className="belt">
       {renderSushi()}
-      <MoreButton />
+      <MoreButton handleNextSushi={handleNextSushi} />
     </div>
   );
 }
