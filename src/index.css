@@ -79,3 +79,10 @@ body {
   width: 700px;
   margin: auto;
 }
+
+.ATM {
+  position: fixed;
+  bottom: 80px;
+  left: 45%;
+  text-align: center;
+}

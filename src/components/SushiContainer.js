@@ -10,6 +10,7 @@ function SushiContainer({
   setEatenSushi,
   setSushiCost,
   sushiCost,
+  budget,
 }) {
   const [moreSushi, setMoreSushi] = useState(0);
 
@@ -39,10 +40,8 @@ function SushiContainer({
     );
   };
   const handleEaten = (sushi) => {
-    const budget = 100 - sushiCost;
-
     if (budget <= 0 || sushi.price > budget) {
-      alert("Get More Money or Wash The Dishes!");
+      alert("Get More Money From The ATM or Wash The Dishes!");
       return;
     } else if (!eatenSushi.includes(sushi.id)) {
       setEatenSushi([...eatenSushi, sushi.id]);
