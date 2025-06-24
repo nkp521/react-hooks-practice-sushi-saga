@@ -7,6 +7,8 @@ const API = "http://localhost:3001/sushis";
 function App() {
   const [sushis, setSushis] = useState([]);
   const [eatenSushi, setEatenSushi] = useState([]);
+  const [sushiCost, setSushiCost] = useState(0);
+  console.log(sushiCost);
 
   return (
     <div className="app">
@@ -16,8 +18,10 @@ function App() {
         API={API}
         eatenSushi={eatenSushi}
         setEatenSushi={setEatenSushi}
+        setSushiCost={setSushiCost}
+        sushiCost={sushiCost}
       />
-      <Table plates={eatenSushi} />
+      <Table plates={eatenSushi} sushiCost={sushiCost} />
     </div>
   );
 }

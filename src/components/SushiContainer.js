@@ -2,7 +2,15 @@ import React, { useEffect, useState } from "react";
 import MoreButton from "./MoreButton";
 import Sushi from "./Sushi";
 
-function SushiContainer({ setSushis, sushis, API, eatenSushi, setEatenSushi }) {
+function SushiContainer({
+  setSushis,
+  sushis,
+  API,
+  eatenSushi,
+  setEatenSushi,
+  setSushiCost,
+  sushiCost,
+}) {
   const [moreSushi, setMoreSushi] = useState(0);
 
   useEffect(() => {
@@ -33,6 +41,7 @@ function SushiContainer({ setSushis, sushis, API, eatenSushi, setEatenSushi }) {
   const handleEaten = (sushi) => {
     if (!eatenSushi.includes(sushi.id)) {
       setEatenSushi([...eatenSushi, sushi.id]);
+      setSushiCost(sushiCost + sushi.price);
     }
   };
 
